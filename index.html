@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Interactive</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .carte {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            transition: transform 0.3s ease;
+        }
+        
+        .carte:hover {
+            transform: translateY(-10px);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .compteur {
+            font-size: 3rem;
+            color: #764ba2;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+        
+        .emoji {
+            font-size: 4rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="carte">
+        <h1>Compteur Magique ✨</h1>
+        <div class="emoji" id="emoji">🎉</div>
+        <div class="compteur" id="compteur">0</div>
+        <button onclick="incrementer()">Cliquer ici !</button>
+        <button onclick="reinitialiser()">Réinitialiser</button>
+    </div>
+
+    <script>
+        let compte = 0;
+        const emojis = ['🎉', '🚀', '⭐', '🌟', '💫', '✨', '🎨', '🎪', '🎭', '🎯'];
+        
+        function incrementer() {
+            compte++;
+            document.getElementById('compteur').textContent = compte;
+            
+            // Changer l'emoji aléatoirement
+            const emojiAleatoire = emojis[Math.floor(Math.random() * emojis.length)];
+            document.getElementById('emoji').textContent = emojiAleatoire;
+        }
+        
+        function reinitialiser() {
+            compte = 0;
+            document.getElementById('compteur').textContent = compte;
+            document.getElementById('emoji').textContent = '🎉';
+        }
+    </script>
+</body>
+</html>
